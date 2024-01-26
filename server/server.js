@@ -22,7 +22,7 @@ const OneToOneMessage = require("./models/OnetoOneMessage");
 //video 25
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3001", //what origin u r allowed us to connect
+    origin: "*", //what origin u r allowed us to connect
     methods: ["GET", "POST"],
   },
 });
@@ -56,6 +56,8 @@ server.listen(port, () => {
 //video 25
 io.on("connection", async (socket) => {
   console.log(JSON.stringify(socket.handshake.query));
+
+  console.log("check");
   // console.log(socket);
   const user_id = socket.handshake.query["user_id"]; //it is going to contain the parameters from the client-side
   // const user_id = socket.handshake.query.user_id;
@@ -67,7 +69,9 @@ io.on("connection", async (socket) => {
   if (user_id != null && Boolean(user_id)) {
     try {
       await User.findByIdAndUpdate(user_id, {
-         socket_id, status: "Online" });
+        socket_id,
+        status: "Online",
+      });
     } catch (error) {
       console.log(error);
     }
