@@ -134,7 +134,10 @@ export default function SettingsDrawer() {
 
               <Divider sx={{ borderStyle: "dashed" }} />
 
-              <Scrollbar sx={{ flexGrow: 1 }}>
+              <Scrollbar
+                sx={{ flexGrow: 1, overflow: "auto" }}
+                className={"scrollbar"}
+              >
                 <Stack spacing={3} sx={{ p: 3 }}>
                   <Stack spacing={1.5}>
                     <Typography variant="subtitle2">Direction</Typography>

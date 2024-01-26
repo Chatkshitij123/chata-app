@@ -75,14 +75,16 @@ export function LoginUser(formValues) {
             // user_id: response.data.user_id,
           })
         );
-          console.log(response.data);
-        window.localStorage.setItem("user_id", response.data.user_id);
+        console.log(response.data);
+        window.localStorage.setItem("user_id", response.data.userDoc_id);
 
-        dispatch(showSnackbar({severity: "success", message: response.data.message}))
+        dispatch(
+          showSnackbar({ severity: "success", message: response.data.message })
+        );
       })
       .catch(function (error) {
         console.log(error);
-        dispatch(showSnackbar({severity: "error",message: error.message}))
+        dispatch(showSnackbar({ severity: "error", message: error.message }));
       });
   };
 }
@@ -220,7 +222,7 @@ export function VerifyEmail(formValues) {
           },
         }
       )
-      //when we are going to receive the response its our duity to logged the user in if they are successfully verified then they generate the 
+      //when we are going to receive the response its our duity to logged the user in if they are successfully verified then they generate the
       //jwt token in our store  and also update the property of islogged in.
       .then((response) => {
         console.log(response);
