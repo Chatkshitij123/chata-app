@@ -15,8 +15,8 @@ const initialState = {
   users: [],
   friends: [],
   friendsRequests: [],
-  chat_type: null,//value for it will be group chat or individual chat
-  room_id: null,//for each and very chat there will be a room id 
+  chat_type: null, //value for it will be group chat or individual chat
+  room_id: null, //for each and very chat there will be a room id
 };
 
 const slice = createSlice({
@@ -56,7 +56,7 @@ const slice = createSlice({
     selectConversation(state, action) {
       state.chat_type = "individual";
       state.room_id = action.payload.room_id;
-    }
+    },
   },
   //reducers are going to update our state in redux
 });
@@ -91,7 +91,7 @@ export function showSnackbar({ severity, message }) {
 
     setTimeout(() => {
       dispatch(slice.actions.closeSnackBar());
-    }, 200);
+    }, 3000);
   };
 }
 
@@ -158,8 +158,8 @@ export const FetchFriendRequests = () => {
   };
 };
 
-export const SelectConversation = ({room_id}) => {
+export const SelectConversation = ({ room_id }) => {
   return async (dispatch, getState) => {
-    dispatch(slice.actions.selectConversation({room_id}));
-  }
-}
+    dispatch(slice.actions.selectConversation({ room_id }));
+  };
+};
